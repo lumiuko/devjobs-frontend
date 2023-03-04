@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  transition: background-color 0.2s, border 0.2s;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex-grow: 1;
+}
+
+.ReactModal__Body--open {
+  overflow: hidden;
+}
+
+.ReactModal__Overlay {
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 200ms ease-in-out;
+}
+
+.ReactModal__Overlay--after-open {
+  opacity: 1;
+}
+
+.ReactModal__Overlay--before-close {
+  opacity: 0;
+}
+
+.ReactModal__Content {
+  inset: 0;
+  margin: auto;
+  position: fixed;
+  width: 327px;
+  height: 217px;
+  border-radius: 6px;
+  color: #19202d;
+  transform: scale(0.9);
+  transition: transform 200ms ease;
+  background-color: #fff;
+}
+
+.dark .ReactModal__Content {
+  background-color: #19202d;
+  color: #fff;
+}
+
+.ReactModal__Content--after-open {
+  transform: scale(1);
+}
+
+.ReactModal__Content--before-close {
+  transform: scale(0.9);
+}
+
+@media (min-width: 768px) {
+  .ReactModal__Content,
+  .ReactModal__Overlay {
+    display: none;
+  }
+}
