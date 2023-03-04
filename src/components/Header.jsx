@@ -14,7 +14,7 @@ export default function Header() {
   }, [isDarkTheme])
 
   return (
-    <header className="pt-8 pb-[4.5rem] bg-header md:bg-header-tablet xl:bg-header-desktop bg-no-repeat bg-cover bg-center">
+    <header className="pt-8 pb-[4.5rem] bg-header md:bg-header-tablet md:pt-11 md:pb-[5.25rem] xl:bg-header-desktop bg-no-repeat bg-cover bg-center">
       <div className="xl:container px-6 md:px-10">
         <div className="flex justify-between items-center">
           <Link to="/" aria-label="To homepage">

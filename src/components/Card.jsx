@@ -7,7 +7,7 @@ export default function Card({ item }) {
         className="w-[50px] h-[50px] rounded-card-logo flex justify-center items-center mt-[-25px]"
         style={{ backgroundColor: item.logoBackground }}
       >
-        <img src={item.logo} />
+        <img src={item.logo} alt={item.company} />
       </div>
       <div className="text-dark-grey mt-6">
         <span>{item.postedAt}</span>
