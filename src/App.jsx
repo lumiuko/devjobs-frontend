@@ -1,20 +1,29 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 import RootLayout from './layouts/RootLayout'
 import Home from './pages/Home'
-import JobDetail from './pages/JobDetail'
+import JobDetail, { loader as jobDetailLoader } from './pages/JobDetail'
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <RootLayout />,
+    children: [
+      {
+        path: '/',
+        element: <Home />
+      },
+      {
+        path: '/job/:id',
+        element: <JobDetail />,
+        loader: info => jobDetailLoader(info)
+      }
+    ]
+  }
+])
 
 function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<RootLayout />}>
-          <Route index element={<Home />} />
-          <Route path="job/:id" element={<JobDetail />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
-  )
+  return <RouterProvider router={router} />
 }
 
 export default App

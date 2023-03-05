@@ -1,54 +1,22 @@
-import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
 import api from '../utils/api'
 import Button from '../components/Button'
+import { useLoaderData } from 'react-router-dom'
+import { useEffect } from 'react'
+
+export async function loader(info) {
+  const res = await api.get(`/jobs/${info.params.id}`)
+  return res.data
+}
 
 export default function JobDetail() {
-  const [data, setData] = useState(null)
-  const [isLoading, setIsLoading] = useState(true)
-  const [error, setError] = useState(null)
-
-  const { id } = useParams()
-
   useEffect(() => {
-    async function fetchItem() {
-      try {
-        const { data } = await api.get(`/jobs/${id}`)
-        setData(data)
-      } catch (err) {
-        setError(err)
-      } finally {
-        setIsLoading(false)
-      }
-    }
+    document.documentElement.scrollTop = 0
+  }, [])
 
-    fetchItem()
-  }, [id])
+  const data = useLoaderData()
 
   function getListItems(items) {
     return items.map((item, index) => <li key={index}>{<span className="relative left-4">{item}</span>}</li>)
-  }
-
-  if (isLoading) {
-    return (
-      <div className="flex items-center justify-center mt-14">
-        <div
-          className="inline-block h-12 w-12 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
-          role="status"
-        >
-          <span className="sr-only">Loading...</span>
-        </div>
-      </div>
-    )
-  }
-
-  if (error) {
-    return (
-      <div className="mt-40 text-center text-h2 font-bold">
-        <div>Oops, something went wrong</div>
-        <div>{error.message}</div>
-      </div>
-    )
   }
 
   return (
