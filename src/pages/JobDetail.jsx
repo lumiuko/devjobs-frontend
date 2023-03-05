@@ -1,11 +1,11 @@
-import api from '../utils/api'
-import Button from '../components/Button'
-import { useLoaderData } from 'react-router-dom'
 import { useEffect } from 'react'
+import { useLoaderData } from 'react-router-dom'
 
-export async function loader(info) {
-  const res = await api.get(`/jobs/${info.params.id}`)
-  return res.data
+import { useLoaderFetch } from '../utils/api'
+import Button from '../components/Button'
+
+export function loader(info) {
+  return useLoaderFetch(`/jobs/${info.params.id}`)
 }
 
 export default function JobDetail() {

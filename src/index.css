@@ -16,6 +16,8 @@ main {
   flex-grow: 1;
 }
 
+/* React Modal */
+
 .ReactModal__Body--open {
   overflow: hidden;
 }

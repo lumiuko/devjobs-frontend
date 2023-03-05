@@ -41,17 +41,17 @@ export default function Home() {
     }
   }
 
-  function refetchJobs() {
+  async function refetchJobs() {
     const filtersQuery = getSearchParams(filters)
     setIsRefetching(true)
 
-    api.get(`/jobs?offset=${data.items.length}&${filtersQuery}`).then(res => {
-      setData(prevData => ({
-        ...prevData,
-        items: [...prevData.items, ...res.data.items]
-      }))
-      setIsRefetching(false)
-    })
+    const res = await api.get(`/jobs?offset=${data.items.length}&${filtersQuery}`)
+    setData(prevData => ({
+      ...prevData,
+      items: [...prevData.items, ...res.data.items]
+    }))
+
+    setIsRefetching(false)
   }
 
   useEffect(() => {
