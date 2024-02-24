@@ -23,7 +23,7 @@ export default function Header() {
           <div className="flex items-center gap-4">
             <img src="/assets/desktop/icon-sun.svg" alt="Sun icon" />
             <label className="relative w-[48px] h-[24px]">
-              <input type="checkbox" checked={isDarkTheme} onChange={toggleTheme} className="peer sr-only" />
+              <input type="checkbox" checked={isDarkTheme} onChange={toggleTheme} className="peer sr-only" aria-label="Toggle dark mode" />
               <span className="absolute cursor-pointer inset-0 bg-white rounded-switch before:absolute before:content-[''] before:rounded-full before:w-[14px] before:h-[14px] before:bg-primary before:left-[5px] before:bottom-[5px] peer-checked:before:translate-x-[24px] before:transition-all"></span>
             </label>
             <img src="/assets/desktop/icon-moon.svg" alt="Moon icon" />

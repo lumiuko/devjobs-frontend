@@ -79,6 +79,7 @@ export default function Home() {
 
   return (
     <main className="xl:container px-6 md:px-10">
+      <h1 className="sr-only">Devjobs</h1>
       <Filters fetchJobs={fetchJobs} filters={filters} setFilters={setFilters} />
       {!message ? (
         <>
